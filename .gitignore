@@ -1,0 +1,19 @@
+# Secrets / credentials - NEVER commit or deploy these
+*.env
+.env
+credentials.json
+*sooprema*api*.zip
+config.php
+
+# Local build cache / raw CRM data (can contain non-public agency fields)
+data/
+tools/cache/
+
+# Python / tooling
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+node_modules/
+.claude/

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System — Nicolas Strebel</title>
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Design system preview for nicolasstrebel.com — colours, typography, components and motion." />
+
+  <!-- Fonts: Cormorant Garamond (editorial serif) + Plus Jakarta Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* page-local helpers for the styleguide only */
+    .sg-section { padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem); }
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+    .swatch { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+    .swatch__chip { height: 84px; }
+    .swatch__meta { padding: 0.7rem 0.85rem; font-size: 0.8rem; }
+    .swatch__meta strong { display: block; color: var(--navy); font-weight: 600; }
+    .swatch__meta code { color: var(--muted); font-size: 0.78rem; }
+    .type-row { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .type-row span.tag { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .prop-thumb { aspect-ratio: 4/3; background:
+        linear-gradient(135deg, var(--accent-soft), var(--stone-2));
+        display: grid; place-items: center; color: var(--accent-deep);
+        font-family: var(--font-serif); font-size: 1.1rem; }
+    .note { background: var(--white); border: 1px dashed var(--accent); border-radius: var(--radius);
+            padding: 1rem 1.25rem; font-size: 0.9rem; color: var(--ink); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="#">Nicolas Strebel<small>Personal Shopper Inmobiliario</small></a>
+      <nav aria-label="Primary">
+        <ul class="nav__links" id="primary-nav">
+          <li><a href="#" aria-current="page">Home</a></li>
+          <li><a href="#">Buyer's Advisor</a></li>
+          <li><a href="#">Home Projects</a></li>
+          <li><a href="#">Properties</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="lang-toggle" type="button" aria-label="Change language">EN ·<span class="text-muted">&nbsp;DE&nbsp;NL</span></button>
+        <a class="btn btn--whatsapp" href="https://wa.me/34670260445">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.34 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.004c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Zm0 18.02h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.27 8.27 0 1 1 6.97 3.86Zm4.53-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.38-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Intro / hero treatment -->
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow reveal">Design System · Preview</p>
+        <h1 class="display reveal text-balance" data-delay="1">The eyes and feet of my clients.</h1>
+        <p class="lead reveal" data-delay="2" style="max-width: 40rem;">
+          This page shows the visual language for nicolasstrebel.com — colour, typography,
+          components and motion — before any photography is placed. Review the feel; then I build all six pages with your real assets.
+        </p>
+        <div class="btn-row reveal" data-delay="3" style="margin-top: 2rem;">
+          <a class="btn btn--primary" href="#">Request a consultation</a>
+          <a class="text-cta" href="#">See the components
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colours -->
+    <section class="sg-section section--alt">
+      <div class="container">
+        <p class="eyebrow">01</p>
+        <h2 class="reveal">Colour</h2>
+        <hr class="rule-accent" />
+        <p class="text-muted reveal" style="margin-bottom:2rem;">Built around the signature blue <code>#7993AD</code>. Warm stone backgrounds, deep navy authority, sand as a secondary accent for the construction arm.</p>
+        <div class="swatches reveal">
+          <div class="swatch"><div class="swatch__chip" style="background:#7993AD"></div><div class="swatch__meta"><strong>Accent</strong><code>#7993AD</code></div></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#5F7790"></div><div class="swatch__meta"><strong>Accent deep</strong><code>#5F7790</code></div></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#22323F"></div><div class="swatch__meta"><strong>Navy</strong><code>#22323F</code></div></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#2B3742"></div><div class="swatch__meta"><strong>Ink (body)</strong><code>#2B3742</code></div></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#BFA171"></div><div class="swatch__meta"><strong>Sand</strong><code>#BFA171</code></div></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#F7F4EF; border-bottom:1px solid var(--line)"></div><div class="swatch__meta"><strong>Stone bg</strong><code>#F7F4EF</code></div></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#EFE9DF; border-bottom:1px solid var(--line)"></div><div class="swatch__meta"><strong>Stone alt</strong><code>#EFE9DF</code></div></div>
+          <div class="swatch"><div class="swatch__chip" style="background:#DCE4EC; border-bottom:1px solid var(--line)"></div><div class="swatch__meta"><strong>Accent soft</strong><code>#DCE4EC</code></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="sg-section">
+      <div class="container">
+        <p class="eyebrow">02</p>
+        <h2 class="reveal">Typography</h2>
+        <hr class="rule-accent" />
+        <p class="text-muted reveal" style="margin-bottom:2rem;">Headlines in <strong>Cormorant Garamond</strong> (editorial serif). Body in <strong>Plus Jakarta Sans</strong> (clean, highly readable). No Inter, Roboto or Arial.</p>
+        <div class="reveal">
+          <div class="type-row"><span class="tag">Display</span><div class="display" style="margin:0;">Refined Mediterranean</div></div>
+          <div class="type-row"><span class="tag">H2</span><h2 style="margin:0;">A buyer's advocate, not an agency</h2></div>
+          <div class="type-row"><span class="tag">H3</span><h3 style="margin:0;">Construction & project management</h3></div>
+          <div class="type-row"><span class="tag">Lead</span><p class="lead" style="margin:0;">I work exclusively for the buyer — finding the right property, flagging every problem, and willing to tell you when not to buy.</p></div>
+          <div class="type-row"><span class="tag">Body</span><p style="margin:0;">Over twenty-five years on the Costa Blanca, more than 500 properties sold and 50 build and renovation projects completed — under ISO 9001 quality certification. The most persuasive thing on this page is honesty.</p></div>
+          <div class="type-row"><span class="tag">Eyebrow</span><span class="eyebrow" style="margin:0;">Personal Shopper Inmobiliario</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="sg-section section--alt">
+      <div class="container">
+        <p class="eyebrow">03</p>
+        <h2 class="reveal">Buttons & links</h2>
+        <hr class="rule-accent" />
+        <div class="btn-row reveal" style="margin-bottom:1.5rem;">
+          <a class="btn btn--primary" href="#">Request a consultation</a>
+          <a class="btn" href="#">Filled accent</a>
+          <a class="btn btn--ghost" href="#">Ghost / secondary</a>
+          <a class="btn btn--whatsapp" href="#"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.34 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Z"/></svg>Message Nicolas</a>
+        </div>
+        <div class="btn-row reveal">
+          <a class="text-cta" href="#">Soft text CTA
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <span class="prose"><a href="#">An inline prose link</a> keeps ink colour with an accent underline for contrast.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three arms -->
+    <section class="sg-section">
+      <div class="container">
+        <p class="eyebrow">04</p>
+        <h2 class="reveal">Service arms</h2>
+        <hr class="rule-accent" />
+        <div class="grid grid-3" style="margin-top:2rem;">
+          <article class="arm reveal">
+            <span class="arm__num">01</span>
+            <svg class="arm__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <h3>Personal Shopper</h3>
+            <p class="text-muted mb-0">Your advocate in the market. I represent the buyer alone — searching, vetting, and negotiating hard on your behalf.</p>
+          </article>
+          <article class="arm arm--sand reveal" data-delay="1">
+            <span class="arm__num">02</span>
+            <svg class="arm__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+            <h3>Construction & Renovation</h3>
+            <p class="text-muted mb-0">Even an ugly house can become something beautiful. Full coordination from permits to furnishing.</p>
+          </article>
+          <article class="arm reveal" data-delay="2">
+            <span class="arm__num">03</span>
+            <svg class="arm__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 9l8-5 8 5v10a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1Z"/></svg>
+            <h3>Curated Properties</h3>
+            <p class="text-muted mb-0">A short, hand-picked selection — not a portal. Quality over volume.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust stats -->
+    <section class="sg-section section--navy">
+      <div class="container">
+        <div class="stats">
+          <div class="stat reveal"><span class="stat__num" data-count="25" data-suffix="+">25+</span><span class="stat__label">Years on the Costa Blanca</span></div>
+          <div class="stat reveal" data-delay="1"><span class="stat__num" data-count="500" data-suffix="+">500+</span><span class="stat__label">Properties sold</span></div>
+          <div class="stat reveal" data-delay="2"><span class="stat__num" data-count="50" data-suffix="+">50+</span><span class="stat__label">Build & renovation projects</span></div>
+          <div class="stat reveal" data-delay="3"><span class="stat__num" data-count="5">5</span><span class="stat__label">Languages spoken</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Property card + comparison -->
+    <section class="sg-section section--alt">
+      <div class="container">
+        <p class="eyebrow">05</p>
+        <h2 class="reveal">Components</h2>
+        <hr class="rule-accent" />
+        <div class="grid grid-2" style="margin-top:2rem; align-items:start;">
+          <article class="card reveal">
+            <div class="card__media"><div class="prop-thumb">Property image</div></div>
+            <div class="card__body">
+              <p class="eyebrow" style="margin-bottom:0.5rem;">Jávea · Les Cansalades</p>
+              <h3 style="margin-bottom:0.4rem;">Villa Aurora</h3>
+              <p class="text-muted mb-0" style="font-size:0.95rem;">4 bed · 3 bath · 320 m² · 1,100 m² plot</p>
+              <p style="font-family:var(--font-serif); font-size:1.5rem; color:var(--navy); margin:0.75rem 0 0;">€1,250,000</p>
+            </div>
+          </article>
+          <div class="compare reveal" data-delay="1">
+            <div class="compare__col compare__col--muted">
+              <h3>A traditional agent</h3>
+              <ul>
+                <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>Represents the seller</li>
+                <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>Paid to close a sale</li>
+                <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>Incentive to overlook problems</li>
+              </ul>
+            </div>
+            <div class="compare__col compare__col--highlight">
+              <h3>Nicolas</h3>
+              <ul>
+                <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-deep)" stroke-width="1.8"><path d="M5 12l5 5 9-11"/></svg>Works only for the buyer</li>
+                <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-deep)" stroke-width="1.8"><path d="M5 12l5 5 9-11"/></svg>Flags every problem</li>
+                <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-deep)" stroke-width="1.8"><path d="M5 12l5 5 9-11"/></svg>Will tell you not to buy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="note reveal" style="margin-top:2rem;">
+          The property thumbnail above is a placeholder block — no image files are used on this page. Real photography goes in once you provide assets.
+        </div>
+      </div>
+    </section>
+
+    <!-- Form preview -->
+    <section class="sg-section">
+      <div class="container container--reading">
+        <p class="eyebrow">06</p>
+        <h2 class="reveal">Contact form</h2>
+        <hr class="rule-accent" />
+        <form class="reveal" onsubmit="return false;" style="margin-top:1.5rem;">
+          <div class="field"><label for="n">Name</label><input id="n" type="text" placeholder="Your name" /></div>
+          <div class="field"><label for="e">Email or WhatsApp</label><input id="e" type="text" placeholder="So Nicolas can reach you" /></div>
+          <div class="field"><label for="t">What are you looking for?</label>
+            <select id="t"><option>Buying advice</option><option>Selling</option><option>Build / renovate</option><option>General enquiry</option></select>
+          </div>
+          <div class="field"><label for="m">Message</label><textarea id="m" placeholder="A few words about what you have in mind"></textarea></div>
+          <button class="btn btn--primary" type="submit">Send message</button>
+          <p class="form-note">No newsletters, no sharing your details. Nicolas replies personally, usually within one working day.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">Nicolas Strebel</div>
+          <p style="color:rgba(255,255,255,0.7); max-width:28ch;">Independent real estate & construction consultant. The eyes and feet of my clients on the Costa Blanca North.</p>
+        </div>
+        <div><h4>Services</h4><ul><li><a href="#">Buyer's Advisor</a></li><li><a href="#">Home Projects</a></li><li><a href="#">Properties</a></li></ul></div>
+        <div><h4>About</h4><ul><li><a href="#">Nicolas's story</a></li><li><a href="#">Areas covered</a></li><li><a href="#">Contact</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li><a href="https://wa.me/34670260445">+34 670 260 445</a></li><li><a href="mailto:info@nicolasstrebel.com">info@nicolasstrebel.com</a></li><li>Teulada, Costa Blanca</li></ul></div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> Nicolas Strebel. All rights reserved.</span>
+        <span>Mon–Fri 09:00–14:00 · DE · EN · NL · FR · ES</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp (mobile-forward) -->
+  <a class="wa-float" href="https://wa.me/34670260445" aria-label="Message Nicolas on WhatsApp">
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.34 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Zm0 18.02a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.27 8.27 0 1 1 6.97 3.86Z"/></svg>
+  </a>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

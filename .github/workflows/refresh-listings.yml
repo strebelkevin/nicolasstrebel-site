@@ -1,0 +1,57 @@
+name: Refresh listings & deploy
+
+# Runs automatically in GitHub's cloud - no laptop required.
+on:
+  schedule:
+    - cron: "0 * * * *"   # every hour (no pip installs in this build, so each run is light)
+  workflow_dispatch: {}      # a manual "Run now" button in the GitHub Actions tab
+  push:
+    branches: [ main ]       # also rebuild + publish whenever the site itself is edited
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch live listings from the Sooprema CRM
+        # Credentials come from encrypted GitHub Secrets - never stored in the repo.
+        env:
+          SOOPREMA_AGENCY:     ${{ secrets.SOOPREMA_AGENCY }}
+          SOOPREMA_PUBLIC_KEY: ${{ secrets.SOOPREMA_PUBLIC_KEY }}
+          SOOPREMA_SECRET_KEY: ${{ secrets.SOOPREMA_SECRET_KEY }}
+          SOOPREMA_URL:        ${{ secrets.SOOPREMA_URL }}
+        run: python tools/sooprema_fetch.py sync
+
+      - name: Build the static site
+        run: python build.py
+
+      - name: Package public files only (no source, tooling, secrets or raw data)
+        run: |
+          mkdir -p dist
+          rsync -a --delete \
+            --exclude '.git' --exclude '.github' --exclude '.gitignore' \
+            --exclude '*.py' --exclude '__pycache__' \
+            --exclude 'tools' --exclude 'scrape' --exclude 'data' \
+            --exclude 'node_modules' --exclude '.DS_Store' \
+            --exclude '*.env' --exclude 'credentials.json' --exclude 'config.php' \
+            --exclude '*sooprema*api*' --exclude '*.zip' \
+            --exclude 'index-alt*.html' --exclude '_preview_guide.html' \
+            --exclude 'dist' \
+            ./ dist/
+
+      - name: Publish to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN:  ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx -y wrangler@latest pages deploy dist --project-name nicolasstrebel --branch main
