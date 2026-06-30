@@ -605,7 +605,10 @@ a.link:hover {
 
 /* Collapse the nav to a hamburger earlier (7 items need the room) */
 @media (max-width: 1080px) {
-  .nav__links, .nav__actions .lang-toggle, .nav__actions .btn--whatsapp { display: none; }
+  .nav__links, .nav__actions .btn--whatsapp { display: none; }
+  /* keep the language switcher reachable on mobile (sits next to the hamburger) */
+  .nav__actions { gap: 0.4rem; }
+  .lang-toggle { padding: 0.4rem 0.6rem; }
   .nav__toggle { display: inline-flex; }
 
   .nav__links.is-open {

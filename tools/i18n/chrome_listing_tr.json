@@ -1,0 +1,352 @@
+{
+  "About this property": {
+    "de": "Über diese Immobilie",
+    "nl": "Over deze woning",
+    "fr": "À propos de ce bien"
+  },
+  "Highlights": {
+    "de": "Highlights",
+    "nl": "Hoogtepunten",
+    "fr": "Points forts"
+  },
+  "Request details or a viewing": {
+    "de": "Details oder eine Besichtigung anfragen",
+    "nl": "Vraag informatie of een bezichtiging aan",
+    "fr": "Demander des informations ou une visite"
+  },
+  "Your name": {
+    "de": "Ihr Name",
+    "nl": "Uw naam",
+    "fr": "Votre nom"
+  },
+  "Email": {
+    "de": "E-Mail",
+    "nl": "E-mail",
+    "fr": "E-mail"
+  },
+  "Phone / WhatsApp": {
+    "de": "Telefon / WhatsApp",
+    "nl": "Telefoon / WhatsApp",
+    "fr": "Téléphone / WhatsApp"
+  },
+  "Anything you'd like to ask? (optional)": {
+    "de": "Möchten Sie etwas fragen? (optional)",
+    "nl": "Heeft u nog vragen? (optioneel)",
+    "fr": "Une question ? (facultatif)"
+  },
+  "I agree to be contacted about this enquiry. See the": {
+    "de": "Ich bin damit einverstanden, zu dieser Anfrage kontaktiert zu werden. Siehe die",
+    "nl": "Ik ga ermee akkoord om over deze aanvraag te worden gecontacteerd. Zie de",
+    "fr": "J'accepte d'être contacté(e) au sujet de cette demande. Voir la"
+  },
+  "privacy notice": {
+    "de": "Datenschutzerklärung",
+    "nl": "privacyverklaring",
+    "fr": "politique de confidentialité"
+  },
+  "Send enquiry": {
+    "de": "Anfrage senden",
+    "nl": "Aanvraag versturen",
+    "fr": "Envoyer la demande"
+  },
+  "Or message on WhatsApp": {
+    "de": "Oder per WhatsApp schreiben",
+    "nl": "Of stuur een bericht via WhatsApp",
+    "fr": "Ou écrivez sur WhatsApp"
+  },
+  "Asking price · taxes & purchase costs additional": {
+    "de": "Angebotspreis · Steuern & Kaufnebenkosten zusätzlich",
+    "nl": "Vraagprijs · belastingen & aankoopkosten apart",
+    "fr": "Prix demandé · taxes & frais d'acquisition en sus"
+  },
+  "As your buyer's advisor I'll verify the legal status, check the real running costs, and tell you honestly how this compares with others at this price - before you commit.": {
+    "de": "Als Ihr Käuferberater prüfe ich den rechtlichen Status, kontrolliere die tatsächlichen laufenden Kosten und sage Ihnen ehrlich, wie diese Immobilie im Vergleich zu anderen in dieser Preisklasse abschneidet - bevor Sie sich festlegen.",
+    "nl": "Als uw aankoopmakelaar controleer ik de juridische status, ga ik de werkelijke vaste lasten na en zeg ik u eerlijk hoe deze woning zich verhoudt tot andere in dezelfde prijsklasse - voordat u zich vastlegt.",
+    "fr": "En tant que votre conseiller à l'achat, je vérifie le statut juridique, je contrôle les charges réelles et je vous dis honnêtement comment ce bien se compare aux autres dans cette gamme de prix - avant que vous ne vous engagiez."
+  },
+  "Location": {
+    "de": "Lage",
+    "nl": "Locatie",
+    "fr": "Emplacement"
+  },
+  "Approximate area. The exact address is shared on viewing.": {
+    "de": "Ungefähre Lage. Die genaue Adresse wird bei der Besichtigung mitgeteilt.",
+    "nl": "Bij benadering. Het exacte adres wordt bij de bezichtiging gedeeld.",
+    "fr": "Zone approximative. L'adresse exacte est communiquée lors de la visite."
+  },
+  "Video": {
+    "de": "Video",
+    "nl": "Video",
+    "fr": "Vidéo"
+  },
+  "A closer look": {
+    "de": "Genauer betrachtet",
+    "nl": "Een nadere blik",
+    "fr": "Pour y voir de plus près"
+  },
+  "Want a closer look - with someone on your side?": {
+    "de": "Möchten Sie genauer hinsehen - mit jemandem an Ihrer Seite?",
+    "nl": "Wilt u het van dichterbij bekijken - met iemand aan uw zijde?",
+    "fr": "Envie d'y regarder de plus près - avec quelqu'un à vos côtés ?"
+  },
+  "I'll arrange the viewing, ask the awkward questions for you, and give you a straight assessment.": {
+    "de": "Ich organisiere die Besichtigung, stelle für Sie die unbequemen Fragen und gebe Ihnen eine ehrliche Einschätzung.",
+    "nl": "Ik regel de bezichtiging, stel voor u de lastige vragen en geef u een eerlijke beoordeling.",
+    "fr": "J'organise la visite, je pose pour vous les questions qui dérangent et je vous donne une évaluation franche."
+  },
+  "Bedrooms": {
+    "de": "Schlafzimmer",
+    "nl": "Slaapkamers",
+    "fr": "Chambres"
+  },
+  "Bathrooms": {
+    "de": "Badezimmer",
+    "nl": "Badkamers",
+    "fr": "Salles de bain"
+  },
+  "Built area": {
+    "de": "Wohnfläche",
+    "nl": "Woonoppervlak",
+    "fr": "Surface construite"
+  },
+  "Plot": {
+    "de": "Grundstück",
+    "nl": "Perceel",
+    "fr": "Terrain"
+  },
+  "Outdoor": {
+    "de": "Außenfläche",
+    "nl": "Buitenruimte",
+    "fr": "Extérieur"
+  },
+  "Energy rating": {
+    "de": "Energieklasse",
+    "nl": "Energielabel",
+    "fr": "Classe énergétique"
+  },
+  "For sale": {
+    "de": "Zu verkaufen",
+    "nl": "Te koop",
+    "fr": "À vendre"
+  },
+  "New build": {
+    "de": "Neubau",
+    "nl": "Nieuwbouw",
+    "fr": "Construction neuve"
+  },
+  "Reserved": {
+    "de": "Reserviert",
+    "nl": "Gereserveerd",
+    "fr": "Réservé"
+  },
+  "Price reduced": {
+    "de": "Preis reduziert",
+    "nl": "Prijs verlaagd",
+    "fr": "Prix réduit"
+  },
+  "Sold": {
+    "de": "Verkauft",
+    "nl": "Verkocht",
+    "fr": "Vendu"
+  },
+  "Exclusive": {
+    "de": "Exklusiv",
+    "nl": "Exclusief",
+    "fr": "Exclusivité"
+  },
+  "Brand new": {
+    "de": "Neuwertig",
+    "nl": "Gloednieuw",
+    "fr": "Neuf"
+  },
+  "New listing": {
+    "de": "Neu im Angebot",
+    "nl": "Nieuw aanbod",
+    "fr": "Nouveau bien"
+  },
+  "Under construction": {
+    "de": "Im Bau",
+    "nl": "In aanbouw",
+    "fr": "En construction"
+  },
+  "Negotiable": {
+    "de": "Verhandelbar",
+    "nl": "Onderhandelbaar",
+    "fr": "Négociable"
+  },
+  "Offer": {
+    "de": "Angebot",
+    "nl": "Aanbieding",
+    "fr": "Offre"
+  },
+  "Bank property": {
+    "de": "Bankimmobilie",
+    "nl": "Bankwoning",
+    "fr": "Bien bancaire"
+  },
+  "Zero commission": {
+    "de": "Keine Provision",
+    "nl": "Geen courtage",
+    "fr": "Sans commission"
+  },
+  "Project": {
+    "de": "Projekt",
+    "nl": "Project",
+    "fr": "Projet"
+  },
+  "Garage": {
+    "de": "Garage",
+    "nl": "Garage",
+    "fr": "Garage"
+  },
+  "Parking": {
+    "de": "Stellplatz",
+    "nl": "Parkeerplaats",
+    "fr": "Parking"
+  },
+  "Pool": {
+    "de": "Pool",
+    "nl": "Zwembad",
+    "fr": "Piscine"
+  },
+  "Heating": {
+    "de": "Heizung",
+    "nl": "Verwarming",
+    "fr": "Chauffage"
+  },
+  "Lift": {
+    "de": "Aufzug",
+    "nl": "Lift",
+    "fr": "Ascenseur"
+  },
+  "Storage room": {
+    "de": "Abstellraum",
+    "nl": "Berging",
+    "fr": "Débarras"
+  },
+  "Furnished": {
+    "de": "Möbliert",
+    "nl": "Gemeubileerd",
+    "fr": "Meublé"
+  },
+  "Unfurnished": {
+    "de": "Unmöbliert",
+    "nl": "Ongemeubileerd",
+    "fr": "Non meublé"
+  },
+  "Fireplace": {
+    "de": "Kamin",
+    "nl": "Open haard",
+    "fr": "Cheminée"
+  },
+  "Alarm system": {
+    "de": "Alarmanlage",
+    "nl": "Alarmsysteem",
+    "fr": "Système d'alarme"
+  },
+  "Internet": {
+    "de": "Internet",
+    "nl": "Internet",
+    "fr": "Internet"
+  },
+  "Double glazing": {
+    "de": "Doppelverglasung",
+    "nl": "Dubbel glas",
+    "fr": "Double vitrage"
+  },
+  "Security door": {
+    "de": "Sicherheitstür",
+    "nl": "Veiligheidsdeur",
+    "fr": "Porte blindée"
+  },
+  "Barbecue": {
+    "de": "Grillplatz",
+    "nl": "Barbecue",
+    "fr": "Barbecue"
+  },
+  "Summer kitchen": {
+    "de": "Sommerküche",
+    "nl": "Buitenkeuken",
+    "fr": "Cuisine d'été"
+  },
+  "Open terrace": {
+    "de": "Offene Terrasse",
+    "nl": "Open terras",
+    "fr": "Terrasse ouverte"
+  },
+  "Covered terrace": {
+    "de": "Überdachte Terrasse",
+    "nl": "Overdekt terras",
+    "fr": "Terrasse couverte"
+  },
+  "Enclosed plot": {
+    "de": "Umzäuntes Grundstück",
+    "nl": "Omheind perceel",
+    "fr": "Terrain clôturé"
+  },
+  "Laundry room": {
+    "de": "Hauswirtschaftsraum",
+    "nl": "Wasruimte",
+    "fr": "Buanderie"
+  },
+  "Outdoor shower": {
+    "de": "Außendusche",
+    "nl": "Buitendouche",
+    "fr": "Douche extérieure"
+  },
+  "Satellite TV": {
+    "de": "Satelliten-TV",
+    "nl": "Satelliet-tv",
+    "fr": "TV satellite"
+  },
+  "Telephone": {
+    "de": "Telefon",
+    "nl": "Telefoon",
+    "fr": "Téléphone"
+  },
+  "Water deposit": {
+    "de": "Wasserspeicher",
+    "nl": "Watertank",
+    "fr": "Réservoir d'eau"
+  },
+  "View property": {
+    "de": "Immobilie ansehen",
+    "nl": "Bekijk woning",
+    "fr": "Voir le bien"
+  },
+  "Price on request": {
+    "de": "Preis auf Anfrage",
+    "nl": "Prijs op aanvraag",
+    "fr": "Prix sur demande"
+  },
+  "bed": {
+    "de": "Schlafz.",
+    "nl": "slaapk.",
+    "fr": "ch."
+  },
+  "bath": {
+    "de": "Bäder",
+    "nl": "badk.",
+    "fr": "sdb"
+  },
+  "photos": {
+    "de": "Fotos",
+    "nl": "foto's",
+    "fr": "photos"
+  },
+  "Built": {
+    "de": "Wohnfläche",
+    "nl": "Woonopp.",
+    "fr": "Construit"
+  },
+  "Built in": {
+    "de": "Baujahr",
+    "nl": "Bouwjaar",
+    "fr": "Construit en"
+  },
+  "Renovated in": {
+    "de": "Renoviert",
+    "nl": "Gerenoveerd in",
+    "fr": "Rénové en"
+  }
+}

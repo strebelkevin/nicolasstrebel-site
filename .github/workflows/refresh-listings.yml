@@ -27,14 +27,18 @@ jobs:
       - name: Install build deps (lxml for the multi-language step)
         run: python -m pip install --quiet lxml
 
-      - name: Fetch live listings from the Sooprema CRM
+      - name: Fetch live listings from the Sooprema CRM (EN + DE/NL/FR)
         # Credentials come from encrypted GitHub Secrets - never stored in the repo.
         env:
           SOOPREMA_AGENCY:     ${{ secrets.SOOPREMA_AGENCY }}
           SOOPREMA_PUBLIC_KEY: ${{ secrets.SOOPREMA_PUBLIC_KEY }}
           SOOPREMA_SECRET_KEY: ${{ secrets.SOOPREMA_SECRET_KEY }}
           SOOPREMA_URL:        ${{ secrets.SOOPREMA_URL }}
-        run: python tools/sooprema_fetch.py sync
+        run: |
+          python tools/sooprema_fetch.py sync
+          python tools/sooprema_fetch.py sync --lang de
+          python tools/sooprema_fetch.py sync --lang nl
+          python tools/sooprema_fetch.py sync --lang fr
 
       - name: Build the static site
         run: python build.py

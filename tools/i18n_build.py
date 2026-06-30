@@ -26,9 +26,33 @@ CORE = (["index.html", "real-estate.html", "home-projects.html", "buyers-advisor
            "interior-design-costa-blanca.html", "project-coordination.html"])
 CORE_SET = set(CORE)
 
-SKIP_CLASS = re.compile(r"\b(prop-card|listing|prop-grid)\b")
 SKIP_TAGS = {"script", "style", "svg", "noscript"}
+
+# Merge all translation sources: UI/marketing copy + property-page chrome + CRM listing text.
 TR = json.loads((I18N / "translations.json").read_text(encoding="utf-8"))
+for _f in ("chrome_listing_tr.json", "listing_translations.json"):
+    _p = I18N / _f
+    if _p.exists():
+        for k, v in json.loads(_p.read_text(encoding="utf-8")).items():
+            TR.setdefault(re.sub(r"\s+", " ", k).strip(), {}).update(v)
+
+def unit(word, lang):
+    e = TR.get(word)
+    return e.get(lang) if (e and e.get(lang)) else word
+
+def localize_units(htmlstr, lang):
+    """Translate the few number-bearing labels that can't be dict-keyed (e.g. '4 bed', '+8 photos')."""
+    def rep(pat, fn):
+        return re.sub(pat, fn, htmlstr)
+    htmlstr = re.sub(r"(\d+)\s+bed\b", lambda m: f"{m.group(1)} {unit('bed', lang)}", htmlstr)
+    htmlstr = re.sub(r"(\d+)\s+bath\b", lambda m: f"{m.group(1)} {unit('bath', lang)}", htmlstr)
+    htmlstr = re.sub(r"\+(\d+)\s+photos\b", lambda m: f"+{m.group(1)} {unit('photos', lang)}", htmlstr)
+    htmlstr = re.sub(r"\bBuilt in (\d{4})", lambda m: f"{unit('Built in', lang)} {m.group(1)}", htmlstr)
+    htmlstr = re.sub(r"\bRenovated in (\d{4})", lambda m: f"{unit('Renovated in', lang)} {m.group(1)}", htmlstr)
+    htmlstr = re.sub(r"\bBuilt (\d[\d.,]* m²)", lambda m: f"{unit('Built', lang)} {m.group(1)}", htmlstr)
+    htmlstr = re.sub(r"\bPlot (\d[\d.,]* m²)", lambda m: f"{unit('Plot', lang)} {m.group(1)}", htmlstr)
+    htmlstr = re.sub(r"\bEnergy rating ([A-G])\b", lambda m: f"{unit('Energy rating', lang)} {m.group(1)}", htmlstr)
+    return htmlstr
 
 
 def tr_get(s, lang):
@@ -37,22 +61,22 @@ def tr_get(s, lang):
     return e.get(lang) if (e and e.get(lang)) else None
 
 
-def in_skip(el):
-    p = el
-    while p is not None:
-        if SKIP_CLASS.search(p.get("class") or ""):
-            return True
-        p = p.getparent()
-    return False
-
-
 def repl_text(val, lang):
     if not val or not val.strip():
         return None
     lead = val[:len(val) - len(val.lstrip())]
     trail = val[len(val.rstrip()):]
-    t = tr_get(val, lang)
-    return (lead + t + trail) if t else None
+    core = val.strip()
+    t = tr_get(core, lang)
+    if t:
+        return lead + t + trail
+    # handle a "<separator> <translatable>" tail, e.g. breadcrumb "· {property title}"
+    m = re.match(r"^([·/|–—-]\s+)(.+)$", core)
+    if m:
+        t2 = tr_get(m.group(2), lang)
+        if t2:
+            return lead + m.group(1) + t2 + trail
+    return None
 
 
 def page_path(page, lang):
@@ -76,9 +100,7 @@ def rewrite_href(href, lang):
     if href.startswith(("assets/", "css/", "js/")):
         return "/" + href + anchor
     if href.endswith(".html"):
-        if href.startswith("property-") or href not in CORE_SET:
-            return "/" + href + anchor            # property detail / non-core -> English root
-        return page_path(href, lang) + anchor      # core page -> same language
+        return page_path(href, lang) + anchor      # all real pages are localized -> same language
     return href + anchor
 
 
@@ -127,7 +149,7 @@ def process(root, page, lang):
             t = tr_get(m.get("content", ""), lang)
             if t: m.set("content", t)
         for el in root.iter():
-            if not isinstance(el.tag, str) or el.tag in SKIP_TAGS or in_skip(el):
+            if not isinstance(el.tag, str) or el.tag in SKIP_TAGS:
                 continue
             for a in ("alt", "placeholder", "title", "aria-label"):
                 v = el.get(a)
@@ -166,8 +188,10 @@ def render(root):
 
 
 def main():
+    # All localizable pages: core + every property detail page (listing text comes from the CRM map)
+    PAGES = CORE + sorted(os.path.basename(p) for p in glob.glob(str(ROOT / "property-*.html")))
     # English root pages: add hreflang + working switcher (no text/link change)
-    for page in CORE:
+    for page in PAGES:
         fp = ROOT / page
         if not fp.exists():
             continue
@@ -179,22 +203,22 @@ def main():
         d = ROOT / lang
         d.mkdir(exist_ok=True)
         n = 0
-        for page in CORE:
+        for page in PAGES:
             fp = ROOT / page
             if not fp.exists():
                 continue
             doc = LH.fromstring(fp.read_text(encoding="utf-8"))
             process(doc, page, lang)
-            (d / page).write_text(render(doc), encoding="utf-8")
+            (d / page).write_text(localize_units(render(doc), lang), encoding="utf-8")
             n += 1
         print(f"  {lang}/: wrote {n} pages")
-    # Add the localized core URLs to the sitemap (build.py wrote the English ones)
+    # Add the localized URLs to the sitemap (build.py wrote the English ones)
     sm = ROOT / "sitemap.xml"
     if sm.exists():
         content = sm.read_text(encoding="utf-8")
         extra = ""
         for lang in LANGS:
-            for page in CORE:
+            for page in PAGES:
                 if (ROOT / lang / page).exists():
                     extra += f"  <url><loc>{SITE}{page_path(page, lang)}</loc><changefreq>weekly</changefreq></url>\n"
         if "</urlset>" in content and extra:

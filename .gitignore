@@ -27,3 +27,4 @@ tools/i18n/chunk_*.json
 tools/i18n/part_*.json
 tools/i18n/units.json
 tools/i18n/per_page.json
+tools/i18n/listing_translations.json

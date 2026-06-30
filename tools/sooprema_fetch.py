@@ -160,11 +160,13 @@ PUBLIC_FIELDS = ",".join([
 SITE_LANG = "en"
 
 
-def cmd_sync(out="data/sooprema-listings.json", per=50):
+def cmd_sync(out=None, per=50, lang=SITE_LANG):
     creds = load_creds()
+    if out is None:
+        out = "data/sooprema-listings.json" if lang == "en" else "data/sooprema-listings-%s.json" % lang
     all_items, page = [], 1
     while True:
-        d = endpoint("/properties", {"page": page, "perPage": per, "sales": 1, "language": SITE_LANG,
+        d = endpoint("/properties", {"page": page, "perPage": per, "sales": 1, "language": lang,
                                       "fields": PUBLIC_FIELDS, "image": "special", "images": "source"}, creds=creds)
         if is_error(d):
             sys.exit("API error on page %d: %s" % (page, d.get("response", {}).get("reason")))
@@ -194,13 +196,14 @@ def main():
     elif cmd == "test":
         cmd_test()
     elif cmd == "sync":
-        out, per = "data/sooprema-listings.json", 50
+        out, per = None, 50          # out=None -> cmd_sync derives the per-language filename
         a = sys.argv[2:]
         if "--out" in a:
             out = a[a.index("--out") + 1]
         if "--per" in a:
             per = int(a[a.index("--per") + 1])
-        cmd_sync(out, per)
+        lang = a[a.index("--lang") + 1] if "--lang" in a else SITE_LANG
+        cmd_sync(out, per, lang)
     else:
         sys.exit("Unknown command: %s" % cmd)
 

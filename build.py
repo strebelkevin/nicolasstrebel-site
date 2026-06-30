@@ -2209,8 +2209,12 @@ def main():
     # Isolated as a subprocess so a missing lxml / translations never breaks the English build.
     try:
         import subprocess, sys
-        if os.path.exists(os.path.join(ROOT, "tools", "i18n", "translations.json")):
-            subprocess.run([sys.executable, os.path.join(ROOT, "tools", "i18n_build.py")], check=True)
+        tools = os.path.join(ROOT, "tools")
+        if os.path.exists(os.path.join(tools, "i18n", "translations.json")):
+            # CRM listing-text map (DE/NL/FR) if per-language data has been synced
+            if os.path.exists(os.path.join(ROOT, "data", "sooprema-listings-de.json")):
+                subprocess.run([sys.executable, os.path.join(tools, "i18n_listings.py")], check=True)
+            subprocess.run([sys.executable, os.path.join(tools, "i18n_build.py")], check=True)
     except Exception as e:
         print("i18n step skipped:", e)
 
