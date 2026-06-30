@@ -17,3 +17,13 @@ __pycache__/
 .DS_Store
 node_modules/
 .claude/
+
+# Generated localized sites (rebuilt by tools/i18n_build.py during the build)
+/de/
+/nl/
+/fr/
+# i18n intermediates (keep translations.json + overrides.json + the .py scripts)
+tools/i18n/chunk_*.json
+tools/i18n/part_*.json
+tools/i18n/units.json
+tools/i18n/per_page.json

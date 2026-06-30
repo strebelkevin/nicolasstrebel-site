@@ -1442,6 +1442,6 @@ a.post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .hero__stats-inner { justify-content: space-between; gap: clamp(1rem, 3vw, 3rem); }
 
 /* Hero advisor avatar: larger, head-framed, soft ring */
-.hero__advisor-av { width: 76px; height: 76px; object-position: center 16%;
+.hero__advisor-av { width: 76px; height: 76px; object-position: center center;
   box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 6px 16px rgba(15,22,28,0.35); }
 .hero__advisor-strip { gap: 1.1rem; }

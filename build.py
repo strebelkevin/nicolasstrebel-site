@@ -776,7 +776,7 @@ def body_home():
             </a>
           </div>
           <div class="hero__advisor-strip reveal" data-delay="4">
-            <img class="hero__advisor-av" src="assets/images/nicolas/portrait-warm.jpg" alt="Nicolas Strebel" loading="lazy" width="76" height="76" />
+            <img class="hero__advisor-av" src="assets/images/nicolas/advisor-head.jpg" alt="Nicolas Strebel" loading="lazy" width="76" height="76" />
             <span><strong>Your advisor - Nicolas Strebel.</strong> Swiss, independent, 25 years on this coast - the same eye that finds your home shapes how it's built and finished. <a href="about.html">More about Nicolas {ARROW}</a></span>
           </div>
         </div>
@@ -2204,6 +2204,15 @@ def main():
                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                 f"{_urls}</urlset>\n")
     print(f"wrote sitemap.xml ({len(SITEMAP_URLS)} urls)")
+
+    # Localised sites (de/nl/fr) - generated from the English pages when translations exist.
+    # Isolated as a subprocess so a missing lxml / translations never breaks the English build.
+    try:
+        import subprocess, sys
+        if os.path.exists(os.path.join(ROOT, "tools", "i18n", "translations.json")):
+            subprocess.run([sys.executable, os.path.join(ROOT, "tools", "i18n_build.py")], check=True)
+    except Exception as e:
+        print("i18n step skipped:", e)
 
     print("\\nBuild complete.")
 

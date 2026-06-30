@@ -24,6 +24,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install build deps (lxml for the multi-language step)
+        run: python -m pip install --quiet lxml
+
       - name: Fetch live listings from the Sooprema CRM
         # Credentials come from encrypted GitHub Secrets - never stored in the repo.
         env:
