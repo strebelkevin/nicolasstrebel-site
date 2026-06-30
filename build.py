@@ -107,7 +107,7 @@ def footer():
         ("renovation-refurbishment-costa-blanca.html","Renovation &amp; refurbishment"),("interior-design-costa-blanca.html","Interior design &amp; furniture"),
         ("project-coordination.html","Project coordination")])
     about = "".join(f'<li><a href="{h}">{l}</a></li>' for h,l in [
-        ("story.html","Nicolas's story"),("about.html","About"),("investors-club.html","Investor's Club"),("about.html#areas","Areas covered"),("contact.html","Contact")])
+        ("about.html","About"),("investors-club.html","Investor's Club"),("about.html#areas","Areas covered"),("contact.html","Contact")])
     return f'''<footer class="footer">
     <div class="container">
       <div class="footer__grid">
@@ -202,7 +202,7 @@ JSONLD_BUSINESS = f'''  <script type="application/ld+json">
     "areaServed": ["Moraira","Calpe","Jávea","Benissa","Benitachell","Cumbre del Sol","Altea","Teulada"],
     "address": {{"@type": "PostalAddress","streetAddress": "Camino del Campamento 44","postalCode": "03724","addressLocality": "Teulada","addressRegion": "Alicante","addressCountry": "ES"}},
     "openingHours": "Mo-Fr 09:00-14:00",
-    "knowsLanguage": ["de","en","fr","nl","es"]
+    "knowsLanguage": ["de","en","fr","it","es"]
   }}
   </script>'''
 
@@ -214,7 +214,7 @@ JSONLD_PERSON = f'''  <script type="application/ld+json">
     "jobTitle": "Real Estate & Building Consultant",
     "image": "{SITE}/assets/images/nicolas/portrait-studio.jpg",
     "worksFor": {{"@type":"Organization","name":"Nicolas Strebel"}},
-    "knowsLanguage": ["German","English","French","Dutch","Spanish"],
+    "knowsLanguage": ["German","English","French","Italian","Spanish"],
     "areaServed": "Costa Blanca North, Spain",
     "url": "{SITE}/about.html"
   }}
@@ -661,13 +661,13 @@ def home_about():
     return f'''    <section class="section">
       <div class="container">
         <div class="split">
-          <div class="split__media split__media--wide reveal"><img src="assets/images/nicolas/nicolas-desk.jpg" alt="Nicolas Strebel, independent real estate and home-projects advisor on the Costa Blanca" loading="lazy" width="800" height="600" style="object-position:center;" /></div>
+          <div class="split__media reveal"><img src="assets/images/nicolas/portrait-warm.jpg" alt="Nicolas Strebel, independent real estate and home-projects advisor on the Costa Blanca" loading="lazy" width="800" height="1000" style="object-position: top center;" /></div>
           <div class="split__body reveal" data-delay="1">
             <p class="eyebrow">Who you'll work with</p>
             <h2>Meet Nicolas</h2>
             <p class="text-muted">A designer by training - Fashion Design at Istituto Marangoni in Milan, then a high-fashion design team in Düsseldorf - Nicolas brought an eye for proportion, material and detail to the Costa Blanca in 1998. He co-founded one of the area's respected agencies, and over twenty-five years sold 500+ properties and delivered 50+ building and renovation projects before going fully independent in 2024. Today he takes on only a few clients at a time, coordinating a trusted network of architects, builders and specialists - one straight opinion and one steady hand from the first viewing to the finished home.</p>
-            {ticklist(["Swiss, based in Teulada", "Fashion Design - Istituto Marangoni, Milan", "25 years in Costa Blanca property &amp; building projects", "Independent since 2024 - tied to no single builder", "Five languages: DE · ES · EN · FR · NL"])}
-            <a class="btn btn--ghost" href="story.html" style="margin-top:0.5rem;">Read Nicolas's story</a>
+            {ticklist(["Swiss, based in Teulada", "Fashion Design - Istituto Marangoni, Milan", "25 years in Costa Blanca property &amp; building projects", "Independent since 2024 - tied to no single builder", "Five languages: DE · ES · EN · FR · IT"])}
+            <a class="btn btn--ghost" href="about.html" style="margin-top:0.5rem;">More about Nicolas {ARROW}</a>
           </div>
         </div>
       </div>
@@ -760,7 +760,7 @@ def body_home():
         <div class="container">
           <p class="eyebrow hero__eyebrow reveal">Independent advisor · Real estate &amp; home projects · Costa Blanca North</p>
           <h1 class="display hero__title reveal" data-delay="1">Your property and your project,<br />under one roof.</h1>
-          <p class="hero__sub reveal" data-delay="2">One independent advisor across buying, selling, building, renovating and investing on the Costa Blanca. 25 years · 500+ sales · 50+ projects. One accountable person, tied to no single agency or builder.</p>
+          <p class="hero__sub reveal" data-delay="2">One independent advisor across buying, selling, building, renovating and investing on the Costa Blanca - one accountable person, tied to no single agency or builder.</p>
           <div class="hero__doors reveal" data-delay="3">
             <a class="hero-door hero-door--re" href="real-estate.html">
               <span class="hero-door__k">Division 01</span>
@@ -776,7 +776,7 @@ def body_home():
             </a>
           </div>
           <div class="hero__advisor-strip reveal" data-delay="4">
-            <img class="hero__advisor-av" src="assets/images/nicolas/ns-portrait-site.jpg" alt="Nicolas Strebel" loading="lazy" width="46" height="46" />
+            <img class="hero__advisor-av" src="assets/images/nicolas/portrait-warm.jpg" alt="Nicolas Strebel" loading="lazy" width="76" height="76" />
             <span><strong>Your advisor - Nicolas Strebel.</strong> Swiss, independent, 25 years on this coast - the same eye that finds your home shapes how it's built and finished. <a href="about.html">More about Nicolas {ARROW}</a></span>
           </div>
         </div>
@@ -786,6 +786,7 @@ def body_home():
           <div class="hstat"><strong data-count="25" data-suffix="+">25+</strong><span>Years on the Costa Blanca</span></div>
           <div class="hstat"><strong data-count="500" data-suffix="+">500+</strong><span>Properties sold</span></div>
           <div class="hstat"><strong data-count="50" data-suffix="+">50+</strong><span>Build &amp; renovation projects</span></div>
+          <div class="hstat"><strong data-count="5">5</strong><span>Languages spoken</span></div>
         </div>
       </div>
     </section>'''
@@ -1521,7 +1522,7 @@ def body_about():
               <div><dt>Based in</dt><dd>Teulada</dd></div>
               <div><dt>On this coast</dt><dd>Since 1998</dd></div>
               <div><dt>Track record</dt><dd>500+ sold · 50+ projects</dd></div>
-              <div><dt>Languages</dt><dd>DE · ES · EN · FR · NL</dd></div>
+              <div><dt>Languages</dt><dd>DE · ES · EN · FR · IT</dd></div>
             </dl>
           </div>
         </div>
@@ -1601,9 +1602,9 @@ def body_about():
       <div class="container text-center">
         <p class="eyebrow reveal" style="color:var(--accent-soft)">No barrier</p>
         <h2 class="reveal">Five languages, native-level care</h2>
-        <p class="reveal" style="color:rgba(255,255,255,0.82);max-width:46ch;margin-inline:auto;">German (native), Spanish (native-level), English, French and Dutch. You'll be understood - and so will every contract, every craftsman and every official.</p>
+        <p class="reveal" style="color:rgba(255,255,255,0.82);max-width:46ch;margin-inline:auto;">German (native), Spanish (native-level), English, French and Italian. You'll be understood - and so will every contract, every craftsman and every official.</p>
         <div class="pill-row reveal" style="justify-content:center;margin-top:1.75rem;">
-          <span class="pill">Deutsch</span><span class="pill">English</span><span class="pill">Español</span><span class="pill">Français</span><span class="pill">Nederlands</span>
+          <span class="pill">Deutsch</span><span class="pill">English</span><span class="pill">Español</span><span class="pill">Français</span><span class="pill">Italiano</span>
         </div>
       </div>
     </section>'''
@@ -2150,12 +2151,8 @@ def main():
          "Talk to Nicolas Strebel directly - WhatsApp, phone or email. Independent buyer's advisor and building consultant, Teulada, Costa Blanca North.",
          body_contact(), "contact.html", extra_head=JSONLD_BUSINESS)
 
-    # STORY
-    page("story.html",
-         "Nicolas Strebel's story - from haute couture to the Costa Blanca",
-         "From Fashion Design in Milan to twenty-five years finding, transforming and finishing homes on the Costa Blanca. The story behind an independent advisor who also coordinates building and renovation projects.",
-         body_story(), "about.html", extra_head=JSONLD_PERSON,
-         og_image="assets/images/nicolas/portrait-studio.jpg")
+    # (The standalone Story page was removed - the About page covers Nicolas's background.
+    #  story.html 301-redirects to about.html via _redirects.)
 
     # LEGAL & PRIVACY
     page("legal.html",

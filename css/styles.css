@@ -1430,3 +1430,18 @@ a.post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .enquiry-form__status { margin: 0.4rem 0 0; font-size: 0.9rem; padding: 0.6rem 0.8rem; border-radius: 8px; }
 .enquiry-form__status.is-ok { background: #e7f3ea; color: #1d6b3a; }
 .enquiry-form__status.is-error { background: #fbecec; color: #9a2c2c; }
+
+/* ==========================================================================
+   Brand stripe (Nicolas's CI azure, more present) + hero refinements
+   ========================================================================== */
+/* Persistent brand stripe across the top of the menu bar, in his corporate blue */
+.nav { border-top: 4px solid var(--accent-deep); }
+
+/* Hero stats: span the full width and distribute evenly (was clustered to the right) */
+.hero__stats { width: 100%; }
+.hero__stats-inner { justify-content: space-between; gap: clamp(1rem, 3vw, 3rem); }
+
+/* Hero advisor avatar: larger, head-framed, soft ring */
+.hero__advisor-av { width: 76px; height: 76px; object-position: center 16%;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 6px 16px rgba(15,22,28,0.35); }
+.hero__advisor-strip { gap: 1.1rem; }
