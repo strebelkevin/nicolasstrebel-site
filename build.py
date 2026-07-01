@@ -146,7 +146,10 @@ def footer():
 SITEMAP_URLS = []
 
 def page(filename, title, description, body, active, extra_head="", og_image="assets/images/hero/home-hero.webp", over_hero=False):
-    canonical = f"{SITE}/{'' if filename=='index.html' else filename}"
+    # Cloudflare Pages serves clean URLs (/about, not /about.html) and 308-redirects the .html form,
+    # so canonical / og:url / sitemap use the clean URL to avoid pointing at a redirect.
+    _clean = '' if filename == 'index.html' else (filename[:-5] if filename.endswith('.html') else filename)
+    canonical = f"{SITE}/{_clean}"
     if not (filename.startswith("index-alt") or filename in ("styleguide.html", "404.html")):
         SITEMAP_URLS.append(canonical)
     htmldoc = f'''<!DOCTYPE html>

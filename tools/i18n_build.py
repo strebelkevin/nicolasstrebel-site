@@ -80,8 +80,8 @@ def repl_text(val, lang):
 
 
 def page_path(page, lang):
-    """URL path for a page in a given language."""
-    base = "" if page == "index.html" else page
+    """Clean URL path for a page in a given language (Cloudflare Pages serves /about, not /about.html)."""
+    base = "" if page == "index.html" else (page[:-5] if page.endswith(".html") else page)
     return ("/" + base) if lang == "en" else (f"/{lang}/" + base)
 
 
