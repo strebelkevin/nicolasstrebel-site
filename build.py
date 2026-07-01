@@ -1413,15 +1413,26 @@ def body_property(p):
     tiles = []
     for i, src in enumerate(imgs[:5]):
         overlay = f'<span class="gallery__more">+{total-5} photos</span>' if (i == 4 and total > 5) else ''
-        tiles.append(f'<a href="{src}" target="_blank" rel="noopener"><img src="{src}" alt="{p["title"]} - photo {i+1}" loading="lazy" width="600" height="450"/>{overlay}</a>')
-    gallery = "".join(tiles)
+        tiles.append(f'<button type="button" class="gallery__tile" data-lb-i="{i}" aria-label="View photo {i+1} of {total}">'
+                     f'<img src="{src}" alt="{p["title"]} - photo {i+1}" loading="lazy" width="600" height="450"/>{overlay}</button>')
+    gallery_tiles = "".join(tiles)
+    # Full in-page click-through lightbox (every photo, no redirect to the CRM)
+    gallery_lb = (f'<script type="application/json" data-gallery-json>{_json.dumps(imgs)}</script>'
+                  '<div class="lightbox" data-lightbox hidden>'
+                  '<button class="lightbox__close" type="button" data-lb-close aria-label="Close">&times;</button>'
+                  '<button class="lightbox__nav lightbox__prev" type="button" data-lb-prev aria-label="Previous photo">&#8249;</button>'
+                  f'<img class="lightbox__img" data-lb-img alt="{p["title"]}" />'
+                  '<button class="lightbox__nav lightbox__next" type="button" data-lb-next aria-label="Next photo">&#8250;</button>'
+                  '<div class="lightbox__count" data-lb-count></div></div>')
     spec_rows = []
     if p.get('beds'): spec_rows.append(("Bedrooms", p['beds']))
     if p.get('baths'): spec_rows.append(("Bathrooms", p['baths']))
     if p.get('area'): spec_rows.append(("Built area", p['area']))
     if p.get('plot'): spec_rows.append(("Plot", p['plot']))
     if p.get('pool'): spec_rows.append(("Outdoor", p['pool']))
-    if p.get('energy'): spec_rows.append(("Energy rating", p['energy']))
+    energy_html = (f'<span class="energy-badge energy-badge--{p["energy"]}">{p["energy"]}</span>'
+                   if p.get('energy') else '<span class="text-muted" style="font-size:0.95rem;">On request</span>')
+    spec_rows.append(("Energy rating", energy_html))
     specs = ('<dl class="spec-list">' + "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in spec_rows) + '</dl>') if spec_rows else ''
     feats_html = "".join(f'<li>{icon(I_CHECK,"1.8")} {f}</li>' for f in p['features'])
     # Only show Highlights when there's enough to be worth a heading - otherwise it looks sparse.
@@ -1434,7 +1445,6 @@ def body_property(p):
 
     hero = f'''    <section class="section section--tight" style="padding-bottom:0;">
       <div class="container">
-        <p class="breadcrumb reveal" style="color:var(--muted)"><a href="index.html">Home</a> · <a href="properties.html">Properties</a> · {p['title']}</p>
         <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;">
           <div>
             <span class="prop-card__loc">{p['loc']}</span>
@@ -1445,7 +1455,7 @@ def body_property(p):
       </div>
     </section>
     <section class="section section--tight" style="padding-top:1.5rem;">
-      <div class="container"><div class="gallery reveal">{gallery}</div></div>
+      <div class="container"><div class="gallery reveal" data-gallery>{gallery_tiles}</div>{gallery_lb}</div>
     </section>'''
 
     main = f'''    <section class="section" style="padding-top:0;">
